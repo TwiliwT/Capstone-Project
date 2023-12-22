@@ -10,17 +10,18 @@ export default function Header() {
       </div>
       <div className="searchbar-container">
         <form>
-          <div>
+          <div className="category-selector-container">
             <select name="category" title="Search in">
               <option selected="selected" value="search-category-all">
                 All
               </option>
+              <option value="search-category-test">This is a test</option>
             </select>
           </div>
-          <div>
+          <div className="search-input-container">
             <input type="text" />
           </div>
-          <div>
+          <div className="serarch-icon-container">
             <i className="material-symbols-outlined">search</i>
           </div>
         </form>

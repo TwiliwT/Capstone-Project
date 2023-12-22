@@ -1,0 +1,67 @@
+header {
+  display: flex;
+  background-color: #969696;
+  -webkit-text-size-adjust: 100%;
+}
+
+.logo-container {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.searchbar-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  justify-content: center;
+  align-content: center;
+}
+
+.searchbar-container > form {
+  background-color: white;
+  width: 80%;
+  height: 40px;
+  border: black solid 1px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.category-selector-container > select {
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  border-right: 1px solid black;
+  background-color: inherit;
+}
+
+.search-input-container {
+  width: 100%;
+}
+
+.search-input-container > input {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  border: 0px;
+  background-color: inherit;
+}
+
+.serarch-icon-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 35px;
+  height: 100%;
+  border-left: solid black 1px;
+  justify-content: center;
+  align-content: center;
+}
+
+.account-container {
+  width: 20%;
+}
+
+.shopping-cart-container {
+  width: 5%;
+}
