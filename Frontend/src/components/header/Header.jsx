@@ -15,11 +15,18 @@ export default function Header() {
               <option selected="selected" value="search-category-all">
                 All
               </option>
-              <option value="search-category-test">This is a test</option>
+              <option value="search-category-electronics">Electronics</option>
+              <option value="search-category-jewelery">Jewelery</option>
+              <option value="search-category-men's-clothing">
+                Men's clothing
+              </option>
+              <option value="search-category-women's-clothing">
+                Women's clothing
+              </option>
             </select>
           </div>
           <div className="search-input-container">
-            <input type="text" />
+            <input type="text" placeholder="Search" />
           </div>
           <div className="serarch-icon-container">
             <i className="material-symbols-outlined">search</i>
