@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
+  //Testing token
+  const token = true;
+
   return (
     <header>
       <div className="logo-container">
-        <h1>Upsilon</h1>
+        <Link to="/">
+          <h1>Upsilon</h1>
+        </Link>
       </div>
       <div className="searchbar-container">
         <form>
@@ -26,20 +31,35 @@ export default function Header() {
             </select>
           </div>
           <div className="search-input-container">
-            <input type="text" placeholder="Search" />
+            <input type="search" placeholder="Search" />
           </div>
           <div className="serarch-icon-container">
-            <i className="material-symbols-outlined">search</i>
+            <button type="submit">
+              <i className="material-symbols-outlined">search</i>
+            </button>
           </div>
         </form>
       </div>
       <div className="account-container">
-        <div>
-          <p>Account</p>
-        </div>
+        {token ? (
+          <Link to="/account">
+            <p>Account</p>
+          </Link>
+        ) : (
+          <>
+            <Link to="/login">
+              <p>Login</p>
+            </Link>
+            <Link to="/register">
+              <p>Register</p>
+            </Link>
+          </>
+        )}
       </div>
       <div className="shopping-cart-container">
-        <i className="material-symbols-outlined">shopping_cart</i>
+        <Link to="/cart">
+          <i className="material-symbols-outlined">shopping_cart</i>
+        </Link>
       </div>
     </header>
   );

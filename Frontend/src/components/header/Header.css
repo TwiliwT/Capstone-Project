@@ -3,6 +3,7 @@ header {
   background-color: #969696;
   -webkit-text-size-adjust: 100%;
   border-bottom: 1px black solid;
+  height: 80px;
 }
 
 .logo-container {
@@ -10,6 +11,11 @@ header {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.logo-container > a {
+  text-decoration: none;
+  color: black;
 }
 
 .searchbar-container {
@@ -70,10 +76,58 @@ header {
   align-content: center;
 }
 
+.serarch-icon-container > button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: inherit;
+}
+
+.serarch-icon-container > button:hover {
+  cursor: pointer;
+}
+
 .account-container {
   width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.account-container > a {
+  color: black;
+  text-decoration: none;
+}
+
+.account-container > a > p {
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.account-container > a > p:hover {
+  border: 1px rgb(212, 138, 0) solid;
 }
 
 .shopping-cart-container {
+  height: 100%;
   width: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.shopping-cart-container > a {
+  color: rgb(62, 122, 146);
+}
+
+.shopping-cart-container > a > i {
+  font-size: 40px;
+}
+
+.shopping-cart-container > a > i:hover {
+  border: 1px rgb(212, 138, 0) solid;
+  padding: 5px;
 }
