@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { TokenContext } from "../../contexts/TokenContext";
 
 import "./Header.css";
 
 export default function Header() {
-  //Testing token
-  const token = true;
+  const { token, setToken } = useContext(TokenContext);
 
   return (
     <header>
