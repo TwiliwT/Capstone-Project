@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
+import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./Header.css";
 
 export default function Header() {
   const { token, setToken } = useContext(TokenContext);
+  const { renderHeader, setRenderHeader } = useContext(RenderContext);
+  
+  console.log(token);
 
   return (
-    <header>
+    <header id="header" className={`${renderHeader ? null : "remove-header"}`}>
       <div className="logo-container">
         <Link to="/">
           <h1>Upsilon</h1>
