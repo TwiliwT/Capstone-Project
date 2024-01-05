@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { RenderContext } from "../../contexts/RenderHeader";
 import { getAllProducts } from "../../API";
 
+import "./ListItems.css"
+
 export default function ListItems({ allProducts, setAllProducts }) {
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
 
@@ -17,12 +19,15 @@ export default function ListItems({ allProducts, setAllProducts }) {
 
   return (
     <main>
-      <div>
+      <div className="item-list-container">
         {allProducts &&
           allProducts.map((item) => {
             return (
-              <div>
+              <div className="item-container" key={item.id}>
+                <img src={item.image}/>
                 <p>{item.title}</p>
+                <p>{item.price}</p>
+                <p>{item.descripotion}</p>
               </div>
             );
           })}

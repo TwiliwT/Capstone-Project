@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
 import { RenderContext } from "../../contexts/RenderHeader";
 
@@ -8,6 +8,24 @@ import "./Header.css";
 export default function Header() {
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
+
+  const navigate = useNavigate()
+
+  //This should cause you to login every time you load the page as the header is always renderd assuming you have a token in localstorage.
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    {
+      if (localToken) {
+        setToken(localToken);
+      }
+    }
+  }, []);
+
+  function logoutHandler() {
+    localStorage.removeItem("token", token)
+    setToken(null)
+    navigate("/")
+  }
 
   return (
     <header id="header" className={`${renderHeader ? null : "remove-header"}`}>
@@ -43,9 +61,12 @@ export default function Header() {
       </div>
       <div className="account-container">
         {token ? (
-          <Link to="/account">
-            <p>Account</p>
-          </Link>
+          <>
+            <Link to="/account">
+              <p>Account</p>
+            </Link>
+            <button onClick={logoutHandler}>Logout</button>
+          </>
         ) : (
           <>
             <Link to="/login">
