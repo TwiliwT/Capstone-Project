@@ -18,9 +18,7 @@ export default function Header() {
         <form>
           <div className="category-selector-container">
             <select name="category" title="Search in">
-              <option selected="selected" value="search-category-all">
-                All
-              </option>
+              <option defaultValue="search-category-all">All</option>
               <option value="search-category-electronics">Electronics</option>
               <option value="search-category-jewelery">Jewelery</option>
               <option value="search-category-men's-clothing">
