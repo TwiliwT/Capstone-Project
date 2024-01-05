@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
 import { RenderContext } from "../../contexts/RenderHeader";
@@ -12,9 +12,13 @@ export default function Login() {
 
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
+      
+
   const navigate = useNavigate();
 
-  setRenderHeader(false)
+  useEffect(() => {
+    setRenderHeader(false);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +36,7 @@ export default function Login() {
       setError("Invalid username or password.");
     }
   };
+
   return (
     <>
       <main>

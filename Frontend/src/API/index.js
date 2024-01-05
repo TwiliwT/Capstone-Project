@@ -1,5 +1,15 @@
 const API_URl = "https://fakestoreapi.com";
 
+export async function getAllProducts() {
+  try {
+    const response = await fetch(`${API_URl}/products`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function loginUser(userObj) {
   try {
     console.log(userObj);

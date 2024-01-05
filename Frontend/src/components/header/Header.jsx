@@ -8,8 +8,6 @@ import "./Header.css";
 export default function Header() {
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
-  
-  console.log(token);
 
   return (
     <header id="header" className={`${renderHeader ? null : "remove-header"}`}>
