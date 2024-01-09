@@ -10,6 +10,16 @@ export async function getAllProducts() {
   }
 }
 
+export async function getSingleProduct(id) {
+  try {
+    const response = await fetch(`${API_URl}/products/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function loginUser(userObj) {
   try {
     console.log(userObj);

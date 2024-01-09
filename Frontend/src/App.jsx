@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Login from "./components/login/Login";
 import ListItems from "./components/listitems/ListItems";
+import SingleProduct from "./components/singleitem/SingleProduct";
 
 import TokenContextProvider from "./contexts/TokenContext";
 import RenderContextProvider from "./contexts/RenderHeader";
@@ -28,6 +29,7 @@ function App() {
             }
           />
           <Route path="/Login" element={<Login />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
         </Routes>
       </TokenContextProvider>
     </RenderContextProvider>
