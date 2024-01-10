@@ -1,5 +1,8 @@
+import { json } from "react-router-dom";
+
 const API_URl = "https://fakestoreapi.com";
 
+//Products
 export async function getAllProducts() {
   try {
     const response = await fetch(`${API_URl}/products`);
@@ -20,6 +23,7 @@ export async function getSingleProduct(id) {
   }
 }
 
+//User
 export async function loginUser(userObj) {
   try {
     console.log(userObj);

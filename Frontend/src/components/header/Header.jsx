@@ -5,7 +5,7 @@ import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./Header.css";
 
-export default function Header() {
+export default function Header({setUserCart}) {
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
 
@@ -24,6 +24,7 @@ export default function Header() {
   function logoutHandler() {
     localStorage.removeItem("token", token)
     setToken(null)
+    setUserCart([])
     navigate("/")
   }
 

@@ -1,18 +1,35 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { getSingleProduct } from "../../API";
 
 import "./SingleProduct.css";
 
-export default function SingleProduct() {
+export default function SingleProduct({ setUserCart, userCart }) {
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
 
   const { id } = useParams();
+
+  //This is really not a good way to do a users cart but i really did not like the way it was done on the API.
+  //So i set this up to emulate it.
+  async function onSubmitHandler(id) {
+    const found = userCart.find((product) => product.id === id);
+
+    if (found) {
+      setError("You can only add 1 of each item to your cart.");
+    } else {
+      let tempArr = userCart;
+      tempArr.push(product);
+      const tempArr2 = tempArr.map((v) => Object.assign(v, { Quantity: 1 }));
+      setUserCart(tempArr2);
+      console.log(userCart)
+    }
+  }
 
   useEffect(() => {
     async function fetchSingleProduct() {
       setProduct(await getSingleProduct(id));
-      console.log(product);
     }
     fetchSingleProduct();
   }, []);
@@ -44,8 +61,15 @@ export default function SingleProduct() {
               <p>{`Price: $${product.price}`}</p>
             </div>
             <div>
-              <button>Add to cart</button>
+              <button
+                onClick={() => {
+                  onSubmitHandler(product.id);
+                }}
+              >
+                Add to cart
+              </button>
             </div>
+            {error && <p>{error}</p>}
           </section>
         </main>
       )}
