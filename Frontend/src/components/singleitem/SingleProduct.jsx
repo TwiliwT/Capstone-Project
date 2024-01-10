@@ -23,7 +23,7 @@ export default function SingleProduct({ setUserCart, userCart }) {
       tempArr.push(product);
       const tempArr2 = tempArr.map((v) => Object.assign(v, { Quantity: 1 }));
       setUserCart(tempArr2);
-      console.log(userCart)
+      console.log(userCart);
     }
   }
 

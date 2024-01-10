@@ -12,7 +12,7 @@ export default function Cart({ userCart, setUserCart }) {
     tempArr = tempArr.reduce((p, c) => (c.id !== id && p.push(c), p), []);
     setUserCart(tempArr);
   }
-  
+
   //This is used to refresh the page whenever you remove an item ffrom the cart
   useEffect(() => {}, [number]);
 

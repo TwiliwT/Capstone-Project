@@ -45,7 +45,7 @@ export async function loginUser(userObj) {
 }
 
 export async function registerUser(userObj) {
-  console.log(userObj)
+  console.log(userObj);
   try {
     const response = await fetch(`${API_URl}/users`, {
       method: "POST",
@@ -71,7 +71,7 @@ export async function registerUser(userObj) {
       }),
     });
     const json = await response.json();
-    console.log(json)
+    console.log(json);
     return json;
   } catch (error) {}
 }
