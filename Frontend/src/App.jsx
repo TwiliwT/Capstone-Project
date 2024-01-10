@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/header/Header";
 import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 import ListItems from "./components/listitems/ListItems";
 import SingleProduct from "./components/singleitem/SingleProduct";
 import Cart from "./components/cart/Cart";
@@ -19,7 +20,7 @@ function App() {
   return (
     <RenderContextProvider>
       <TokenContextProvider>
-        <Header setUserCart={setUserCart}/>
+        <Header setUserCart={setUserCart} />
         <Routes>
           <Route
             path="/"
@@ -31,13 +32,17 @@ function App() {
             }
           />
           <Route
-            path="/product/:id"
+            path="/Product/:id"
             element={
               <SingleProduct userCart={userCart} setUserCart={setUserCart} />
             }
           />
           <Route path="/Login" element={<Login />} />
-          <Route path="/cart" element={<Cart userCart={userCart} setUserCart={setUserCart}/>} />
+          <Route path="/Register" element={<Register />} />
+          <Route
+            path="/Cart"
+            element={<Cart userCart={userCart} setUserCart={setUserCart} />}
+          />
         </Routes>
       </TokenContextProvider>
     </RenderContextProvider>

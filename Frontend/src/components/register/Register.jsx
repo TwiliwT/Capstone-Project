@@ -1,14 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
 import { RenderContext } from "../../contexts/RenderHeader";
-import { loginUser } from "../../API";
+import { registerUser } from "../../API";
 
-import "./Login.css";
+import "./Register.css";
 
-export default function Login() {
+export default function Register() {
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
 
   const { token, setToken } = useContext(TokenContext);
@@ -16,26 +20,24 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const userObj = {
+      email: email,
+      username: username,
+      password: password,
+      name: {
+        firstname: firstName,
+        lastname: lastName,
+      },
+      phone: phoneNumber,
+    };
+    await registerUser(userObj);
+  }
+
   useEffect(() => {
     setRenderHeader(false);
   }, []);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const userObj = {
-      username,
-      password,
-    };
-    const token = await loginUser(userObj);
-    if (token) {
-      setToken(token);
-      navigate("/");
-      localStorage.setItem("token", token);
-      setError(null);
-    } else {
-      setError("Invalid username or password.");
-    }
-  };
 
   return (
     <>
@@ -49,9 +51,23 @@ export default function Login() {
           <form onSubmit={handleSubmit}>
             <section className="name-section">
               <label htmlFor="firstname">First Name</label>
-              <input type="text" id="firstname" />
+              <input
+                type="text"
+                value={firstName}
+                onChange={(event) => {
+                  setFirstName(event.target.value);
+                }}
+                id="firstname"
+              />
               <label htmlFor="lastname">Last Name</label>
-              <input type="text" id="lastname" />
+              <input
+                type="text"
+                value={lastName}
+                onChange={(event) => {
+                  setLastName(event.target.value);
+                }}
+                id="lastname"
+              />
             </section>
             <section className="username-section">
               <label htmlFor="username">Username</label>
@@ -66,7 +82,25 @@ export default function Login() {
             </section>
             <section className="email-section">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" />
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+                id="email"
+              />
+            </section>
+            <section>
+              <label htmlFor="phonenumber">PhoneNumber</label>
+              <input
+                type="tel"
+                value={phoneNumber}
+                onChange={(event) => {
+                  setPhoneNumber(event.target.value);
+                }}
+                id="phonenumber"
+              />
             </section>
             <section className="password-section">
               <label htmlFor="password">Password</label>

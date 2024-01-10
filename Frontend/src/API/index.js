@@ -43,3 +43,35 @@ export async function loginUser(userObj) {
     console.error(error);
   }
 }
+
+export async function registerUser(userObj) {
+  console.log(userObj)
+  try {
+    const response = await fetch(`${API_URl}/users`, {
+      method: "POST",
+      body: JSON.stringify({
+        email: userObj.email,
+        username: userObj.username,
+        password: userObj.password,
+        name: {
+          firstname: userObj.name.firstname,
+          lastname: userObj.name.lastname,
+        },
+        address: {
+          city: "kilcoole",
+          street: "7835 new road",
+          number: 3,
+          zipcode: "12926-3874",
+          geolocation: {
+            lat: "-37.3159",
+            long: "81.1496",
+          },
+        },
+        phone: userObj.phone,
+      }),
+    });
+    const json = await response.json();
+    console.log(json)
+    return json;
+  } catch (error) {}
+}
