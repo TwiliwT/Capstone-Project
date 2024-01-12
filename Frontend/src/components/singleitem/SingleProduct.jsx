@@ -5,7 +5,7 @@ import { getSingleProduct } from "../../API";
 
 import "./SingleProduct.css";
 
-export default function SingleProduct() {
+export default function SingleProduct({ setUserCart }) {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -24,6 +24,7 @@ export default function SingleProduct() {
       const cartInLS = JSON.parse(localStorage.getItem("cart"));
       cartInLS.push(product);
       localStorage.setItem("cart", JSON.stringify(cartInLS));
+      setUserCart(cartInLS);
     }
   }
 

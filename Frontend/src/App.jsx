@@ -20,6 +20,7 @@ function App() {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("cart"))) {
+      setUserCart(JSON.parse(localStorage.getItem("cart")))
       return;
     } else {
       localStorage.setItem("cart", JSON.stringify([]))

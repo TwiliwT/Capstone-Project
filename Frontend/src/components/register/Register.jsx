@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
 import { RenderContext } from "../../contexts/RenderHeader";
-import { registerUser } from "../../API";
+// import { registerUser } from "../../API";
 
 import "./Register.css";
 
@@ -10,8 +10,6 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
 
@@ -23,16 +21,13 @@ export default function Register() {
   async function handleSubmit(event) {
     event.preventDefault();
     const userObj = {
-      email: email,
       username: username,
-      password: password,
-      name: {
-        firstname: firstName,
-        lastname: lastName,
-      },
-      phone: phoneNumber,
     };
-    await registerUser(userObj);
+    setToken("dwaf3g24r789yrfhwnefu!");
+    localStorage.setItem("username", JSON.stringify(userObj));
+    localStorage.setItem("token", JSON.stringify(token));
+
+    navigate("/");
   }
 
   useEffect(() => {
@@ -49,26 +44,6 @@ export default function Register() {
         </div>
         <div className="login-form-container">
           <form onSubmit={handleSubmit}>
-            <section className="name-section">
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(event) => {
-                  setFirstName(event.target.value);
-                }}
-                id="firstname"
-              />
-              <label htmlFor="lastname">Last Name</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(event) => {
-                  setLastName(event.target.value);
-                }}
-                id="lastname"
-              />
-            </section>
             <section className="username-section">
               <label htmlFor="username">Username</label>
               <input

@@ -22,8 +22,9 @@ export default function Header({ setUserCart }) {
   }, []);
 
   function logoutHandler() {
-    localStorage.removeItem("token", token);
-    localStorage.removeItem("cart")
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("cart");
     setToken(null);
     setUserCart([]);
     navigate("/");
