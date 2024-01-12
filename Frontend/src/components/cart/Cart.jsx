@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import "./Cart.css";
+
 export default function Cart({ userCart, setUserCart }) {
   const [number, setNumber] = useState(0);
 
@@ -12,14 +14,21 @@ export default function Cart({ userCart, setUserCart }) {
     localStorage.setItem("cart", JSON.stringify(tempArr));
   }
 
+
+  //Set up a price subtotal cal here
+  useEffect(()=>{
+    
+
+  },[])
+
   return (
     <main>
       <div className="cart-products-list-container">
         {userCart.length ? (
           userCart.map((product) => {
             return (
-              <div className="cart-products-list">
-                <div key={product.id} className="cart-product-container">
+              <div key={product.id} className="cart-product-container">
+                <section>
                   <div className="cart-product-image-container">
                     <img
                       src={product.image}
@@ -27,11 +36,13 @@ export default function Cart({ userCart, setUserCart }) {
                       width="100px"
                     />
                   </div>
+                </section>
+                <section>
                   <div className="cart-product-title-container">
                     <h2>{product.title}</h2>
                   </div>
                   <div className="cart-product-price-container">
-                    <p>{product.price}</p>
+                    <p>{`$${product.price}`}</p>
                   </div>
                   <div className="cart-product-delete-button-container">
                     <button
@@ -43,13 +54,16 @@ export default function Cart({ userCart, setUserCart }) {
                       Remove from cart
                     </button>
                   </div>
-                </div>
+                </section>
               </div>
             );
           })
         ) : (
-          <div></div>
+          <p>Nothing Here</p>
         )}
+      </div>
+      <div className="total-container">
+        <div><p>{`Subtotal: `}</p></div>
       </div>
     </main>
   );
