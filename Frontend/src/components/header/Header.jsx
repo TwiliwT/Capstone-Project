@@ -5,11 +5,11 @@ import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./Header.css";
 
-export default function Header({setUserCart}) {
+export default function Header({ setUserCart }) {
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //This should cause you to login every time you load the page as the header is always renderd assuming you have a token in localstorage.
   useEffect(() => {
@@ -22,10 +22,11 @@ export default function Header({setUserCart}) {
   }, []);
 
   function logoutHandler() {
-    localStorage.removeItem("token", token)
-    setToken(null)
-    setUserCart([])
-    navigate("/")
+    localStorage.removeItem("token", token);
+    localStorage.removeItem("cart")
+    setToken(null);
+    setUserCart([]);
+    navigate("/");
   }
 
   return (

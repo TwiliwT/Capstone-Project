@@ -13,7 +13,6 @@ export default function ListItems({ allProducts, setAllProducts }) {
 
     async function fetchAllProducts() {
       await setAllProducts(await getAllProducts());
-      console.log(allProducts);
     }
     fetchAllProducts();
   }, []);

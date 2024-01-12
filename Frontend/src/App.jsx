@@ -17,6 +17,15 @@ function App() {
   const [allProducts, setAllProducts] = useState(null);
   const [userCart, setUserCart] = useState([]);
 
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("cart"))) {
+      return;
+    } else {
+      localStorage.setItem("cart", JSON.stringify([]))
+    }
+  }, []);
+
   return (
     <RenderContextProvider>
       <TokenContextProvider>

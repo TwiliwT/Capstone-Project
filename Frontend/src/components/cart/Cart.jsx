@@ -13,7 +13,7 @@ export default function Cart({ userCart, setUserCart }) {
     setUserCart(tempArr);
   }
 
-  //This is used to refresh the page whenever you remove an item ffrom the cart
+  //This is used to refresh the component whenever you remove an item from the cart
   useEffect(() => {}, [number]);
 
   return (

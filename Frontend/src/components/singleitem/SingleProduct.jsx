@@ -5,7 +5,7 @@ import { getSingleProduct } from "../../API";
 
 import "./SingleProduct.css";
 
-export default function SingleProduct({ setUserCart, userCart }) {
+export default function SingleProduct() {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -14,16 +14,16 @@ export default function SingleProduct({ setUserCart, userCart }) {
   //This is really not a good way to do a users cart but i really did not like the way it was done on the API.
   //So i set this up to emulate it.
   async function onSubmitHandler(id) {
-    const found = userCart.find((product) => product.id === id);
+    const found = JSON.parse(localStorage.getItem("cart")).find(
+      (product) => product.id === id
+    );
 
     if (found) {
       setError("You can only add 1 of each item to your cart.");
     } else {
-      let tempArr = userCart;
-      tempArr.push(product);
-      const tempArr2 = tempArr.map((v) => Object.assign(v, { Quantity: 1 }));
-      setUserCart(tempArr2);
-      console.log(userCart);
+      const cartInLS = JSON.parse(localStorage.getItem("cart"));
+      cartInLS.push(product);
+      localStorage.setItem("cart", JSON.stringify(cartInLS));
     }
   }
 

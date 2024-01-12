@@ -47,12 +47,6 @@ export default function Login() {
         </div>
         <div className="login-form-container">
           <form onSubmit={handleSubmit}>
-            <section className="name-section">
-              <label htmlFor="firstname">First Name</label>
-              <input type="text" id="firstname" />
-              <label htmlFor="lastname">Last Name</label>
-              <input type="text" id="lastname" />
-            </section>
             <section className="username-section">
               <label htmlFor="username">Username</label>
               <input
@@ -63,10 +57,6 @@ export default function Login() {
                 }}
                 id="username"
               />
-            </section>
-            <section className="email-section">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" />
             </section>
             <section className="password-section">
               <label htmlFor="password">Password</label>
