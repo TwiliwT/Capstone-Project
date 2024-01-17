@@ -1,5 +1,17 @@
-.checkout-logo {
-  text-align: center;
+.checkout-logo > a {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.checkout-logo > a > h1 {
+  margin: 0px;
+  font-size: 2em;
+}
+
+.checkout-form-main {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(233, 233, 233);
 }
 
 .checkout-form-container {
@@ -8,11 +20,31 @@
 }
 
 .checkout-form {
+  background-color: white;
   margin-top: 30px;
+  margin-bottom: 10px;
   border: black 1px solid;
   padding: 20px;
   height: fit-content;
   width: fit-content;
+  box-shadow: 5px 5px 5px black;
+}
+
+.checkout-form-ccv-options {
+  margin: 0px;
+}
+
+.checkout-form-options {
+  padding: 5px 0px 5px 0px;
+}
+
+.checkout-form-options > select {
+  margin-right: 5px;
+}
+
+.ccv-form-section > input {
+  width: 30px;
+  text-align: center;
 }
 
 .total-price-section {
@@ -24,6 +56,8 @@
   border: 1px solid black;
   padding: 20px;
   width: 340px;
+  background-color: white;
+  box-shadow: 5px 5px 5px black;
 }
 
 .order-summary-section {
@@ -63,4 +97,5 @@
   background-color: rgb(201, 248, 197);
   padding: 5px;
   font-size: 1em;
+  cursor: pointer;
 }

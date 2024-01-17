@@ -1,11 +1,14 @@
 import { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./CheckoutForm.css";
 
 export default function CheckoutForm() {
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setRenderHeader(false);
@@ -51,7 +54,7 @@ export default function CheckoutForm() {
                   <option value="november">11</option>
                   <option value="december">12</option>
                 </select>
-                <select name="year" pattern="[0-9\s]{4}" required>
+                <select name="year" required>
                   <option value="2024">24</option>
                   <option value="2025">25</option>
                   <option value="2026">26</option>
@@ -105,7 +108,13 @@ export default function CheckoutForm() {
               </section>
             </section>
             <section className="checkout-button-section">
-              <button>Checkout</button>
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Checkout
+              </button>
             </section>
           </div>
         </section>
