@@ -86,11 +86,14 @@
 .order-total-section {
   display: flex;
   color: rgb(228, 0, 0);
+  border-bottom: 1px black solid;
+  padding-bottom: 10px;
 }
 
 .checkout-button-section {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .checkout-button-section > button {
