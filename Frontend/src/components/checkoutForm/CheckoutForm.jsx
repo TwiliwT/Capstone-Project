@@ -1,17 +1,41 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./CheckoutForm.css";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ setUserCart, userCart }) {
+  const [subTotalPrice, setSubTotalPrice] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
+  function handleOnClick() {
+    localStorage.setItem("cart", JSON.stringify([]));
+    setUserCart([]);
+    navigate("/");
+  }
+
   useEffect(() => {
     setRenderHeader(false);
+
+    async function doPrices(params) {
+      let tempPrice = 0;
+      let tempTax = 0;
+      let tempTotalPrice = 0;
+
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      for (let index = 0; index < cart.length; index++) {
+        const element = cart[index];
+        tempPrice = tempPrice + element.price;
+        setSubTotalPrice(tempPrice);
+      }
+    }
+    doPrices();
   }, []);
 
   return (
@@ -89,14 +113,14 @@ export default function CheckoutForm() {
             </section>
             <section className="prices-section">
               <section className="prices-section-l">
-                <p>Items</p>
+                <p>Items total</p>
                 <p>Shipping</p>
                 <p>Estimated Tax</p>
               </section>
               <section className="prices-section-r">
-                <p>$ITEM PRICE</p>
+                <p>{`$${subTotalPrice}`}</p>
                 <p>$0.00</p>
-                <p>$TAX</p>
+                <p>{`$${(Math.round(tax * 100) / 100).toFixed(2)}`}</p>
               </section>
             </section>
             <section className="order-total-section">
@@ -104,17 +128,11 @@ export default function CheckoutForm() {
                 <h2>Order Total:</h2>
               </section>
               <section className="order-total-section-r">
-                <h2>$2222</h2>
+                <h2>{`${totalPrice}`}</h2>
               </section>
             </section>
             <section className="checkout-button-section">
-              <button
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Checkout
-              </button>
+              <button onClick={handleOnClick}>Checkout</button>
             </section>
           </div>
         </section>

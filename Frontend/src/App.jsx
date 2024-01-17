@@ -53,7 +53,10 @@ function App() {
             path="/Cart"
             element={<Cart userCart={userCart} setUserCart={setUserCart} />}
           />
-          <Route path="/Checkout" element={<CheckoutForm />} />
+          <Route
+            path="/Checkout"
+            element={<CheckoutForm setUserCart={setUserCart} userCart={userCart} />}
+          />
         </Routes>
       </TokenContextProvider>
     </RenderContextProvider>
