@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Cart.css";
 
 export default function Cart({ userCart, setUserCart }) {
   const [number, setNumber] = useState(0);
+
+  const navigate = useNavigate();
 
   function handleOnClick(id) {
     setUserCart(JSON.parse(localStorage.getItem("cart")));
@@ -14,15 +17,11 @@ export default function Cart({ userCart, setUserCart }) {
     localStorage.setItem("cart", JSON.stringify(tempArr));
   }
 
-
   //Set up a price subtotal cal here
-  useEffect(()=>{
-    
-
-  },[])
+  useEffect(() => {}, []);
 
   return (
-    <main>
+    <main className="cart-main">
       <div className="cart-products-list-container">
         {userCart.length ? (
           userCart.map((product) => {
@@ -63,7 +62,18 @@ export default function Cart({ userCart, setUserCart }) {
         )}
       </div>
       <div className="total-container">
-        <div><p>{`Subtotal: `}</p></div>
+        <div>
+          <p>{`Subtotal: `}</p>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              navigate("/checkout");
+            }}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </main>
   );

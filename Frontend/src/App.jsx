@@ -7,6 +7,7 @@ import Register from "./components/register/Register";
 import ListItems from "./components/listitems/ListItems";
 import SingleProduct from "./components/singleitem/SingleProduct";
 import Cart from "./components/cart/Cart";
+import CheckoutForm from "./components/checkoutForm/CheckoutForm";
 
 import TokenContextProvider from "./contexts/TokenContext";
 import RenderContextProvider from "./contexts/RenderHeader";
@@ -17,13 +18,12 @@ function App() {
   const [allProducts, setAllProducts] = useState(null);
   const [userCart, setUserCart] = useState([]);
 
-
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("cart"))) {
-      setUserCart(JSON.parse(localStorage.getItem("cart")))
+      setUserCart(JSON.parse(localStorage.getItem("cart")));
       return;
     } else {
-      localStorage.setItem("cart", JSON.stringify([]))
+      localStorage.setItem("cart", JSON.stringify([]));
     }
   }, []);
 
@@ -53,6 +53,7 @@ function App() {
             path="/Cart"
             element={<Cart userCart={userCart} setUserCart={setUserCart} />}
           />
+          <Route path="/Checkout" element={<CheckoutForm />} />
         </Routes>
       </TokenContextProvider>
     </RenderContextProvider>
