@@ -1,29 +1,146 @@
 .cart-main {
   display: flex;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 91vh;
 }
 
-section {
-  margin: 10px;
+/* List section */
+.left-section {
+  width: 60%;
+  min-height: 100%;
+  display: flex;
+  justify-content: end;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .cart-products-list-container {
+  margin-right: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  min-width: 75%;
-  height: 100%;
+  width: 600px;
+  height: fit-content;
+  border: black 1px solid;
+  border-radius: 5%;
+  background-color: white;
+  box-shadow: 5px 5px 5px black;
 }
 
 .cart-product-container {
   align-self: center;
   justify-self: center;
   display: flex;
-  width: 600px;
-  padding: 10px;
-  border: solid 1px black;
+  width: 100%;
+  height: 175px;
+  margin: 5px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.image-section {
+  min-height: 100%;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.cart-product-image-container {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.cart-product-image-container > img {
+  object-fit: contain;
+}
+
+.item-stuff-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-right: black 1px solid;
+}
+
+.cart-product-title-container {
+  font-size: 1.2em;
+  align-self: center;
+  padding-left: 5px;
+}
+
+.cart-product-price-container {
+  align-self: center;
+}
+
+.cart-product-price-container > p {
+  margin: 5px;
+}
+
+.cart-product-delete-button-container {
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+.empty-cart { 
+  text-align: center;
+}
+
+/* Price section */
+.right-section {
+  width: 40%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
 }
 
 .total-container {
-  min-width: 25%;
+  border-radius: 5%;
+  padding: 5px;
+  margin-left: 30px;
+  height: 170px;
+  border: 1px solid black;
+  width: 320px;
+  box-shadow: 5px 5px 5px black;
+  background-color: white;
+}
+
+.cart-subtotal-container,
+.timeframe-container {
+  display: flex;
+  height: 30%;
+  border-bottom: black 1px solid;
+}
+
+.cart-subtotal-container > section,
+.timeframe-container > section {
+  width: 50%;
+}
+
+.cart-subtotal-container-sec-r,
+.timeframe-container-sec-r {
+  text-align: end;
+  color: red;
+}
+
+.cart-button-container {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.cart-button-container > button {
+  height: 30px;
+  cursor: pointer;
 }

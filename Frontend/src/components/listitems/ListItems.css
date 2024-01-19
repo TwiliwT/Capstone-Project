@@ -24,7 +24,6 @@
 .item-image-container {
   width: 190px;
   height: 150px;
-  
   display: flex;
   justify-content: center;
   padding: 5px;
@@ -35,7 +34,6 @@
   max-width: 190px;
   object-fit: contain;
 }
-
 
 .item-price-container {
   display: flex;

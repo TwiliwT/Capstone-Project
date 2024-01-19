@@ -35,63 +35,61 @@ export default function Register() {
   }, []);
 
   return (
-    <>
-      <main>
-        <div>
-          <Link to="/">
-            <h1 className="logo-login">Upsilon</h1>
-          </Link>
-        </div>
-        <div className="login-form-container">
-          <form onSubmit={handleSubmit}>
-            <section className="username-section">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(event) => {
-                  setUsername(event.target.value);
-                }}
-                id="username"
-              />
-            </section>
-            <section className="email-section">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                }}
-                id="email"
-              />
-            </section>
-            <section>
-              <label htmlFor="phonenumber">PhoneNumber</label>
-              <input
-                type="tel"
-                value={phoneNumber}
-                onChange={(event) => {
-                  setPhoneNumber(event.target.value);
-                }}
-                id="phonenumber"
-              />
-            </section>
-            <section className="password-section">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-                id="password"
-              />
-            </section>
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      </main>
-    </>
+    <main>
+      <div>
+        <Link to="/">
+          <h1 className="logo-login">Upsilon</h1>
+        </Link>
+      </div>
+      <div className="login-form-container">
+        <form onSubmit={handleSubmit}>
+          <section className="username-section">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+              id="username"
+            />
+          </section>
+          <section className="email-section">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+              id="email"
+            />
+          </section>
+          <section>
+            <label htmlFor="phonenumber">PhoneNumber</label>
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={(event) => {
+                setPhoneNumber(event.target.value);
+              }}
+              id="phonenumber"
+            />
+          </section>
+          <section className="password-section">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              id="password"
+            />
+          </section>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </main>
   );
 }
