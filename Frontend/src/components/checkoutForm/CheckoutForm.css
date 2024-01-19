@@ -1,7 +1,11 @@
-.checkout-logo > a {
+.checkout-logo {
   display: flex;
   justify-content: center;
+}
+
+.checkout-logo > a {
   padding: 10px;
+  width: fit-content;
 }
 .checkout-logo > a > h1 {
   margin: 0px;

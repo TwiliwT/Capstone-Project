@@ -23,20 +23,33 @@ export default function CheckoutForm({ setUserCart, userCart }) {
   useEffect(() => {
     setRenderHeader(false);
 
-    async function doPrices(params) {
+    async function doPrices() {
       let tempPrice = 0;
-      let tempTax = 0;
       let tempTotalPrice = 0;
 
       const cart = JSON.parse(localStorage.getItem("cart"));
-      for (let index = 0; index < cart.length; index++) {
-        const element = cart[index];
-        tempPrice = tempPrice + element.price;
-        setSubTotalPrice(tempPrice);
+
+      async function doSubTotal() {
+        for (let index = 0; index < cart.length; index++) {
+          const element = cart[index];
+          tempPrice = tempPrice + element.price;
+          setSubTotalPrice(tempPrice);
+        }
       }
+      await doSubTotal();
+
+      setTax(tempPrice * 0.0825);
+
+      async function doTotalPrice() {
+        tempTotalPrice = tempPrice + tax;
+        tempTotalPrice = Number(tempTotalPrice.toFixed(2));
+        return tempTotalPrice;
+      }
+
+      setTotalPrice(await doTotalPrice());
     }
     doPrices();
-  }, []);
+  });
 
   return (
     <main className="checkout-form-main">
@@ -128,7 +141,7 @@ export default function CheckoutForm({ setUserCart, userCart }) {
                 <h2>Order Total:</h2>
               </section>
               <section className="order-total-section-r">
-                <h2>{`${totalPrice}`}</h2>
+                <h2>{`$${totalPrice}`}</h2>
               </section>
             </section>
             <section className="checkout-button-section">
