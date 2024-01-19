@@ -14,7 +14,7 @@ export default function Register() {
   const [error, setError] = useState("");
 
   const { token, setToken } = useContext(TokenContext);
-  const { renderHeader, setRenderHeader } = useContext(RenderContext);
+  const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function Register() {
     };
     setToken("dwaf3g24r789yrfhwnefu!");
     localStorage.setItem("username", JSON.stringify(userObj));
-    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("token", "dwaf3g24r789yrfhwnefu!");
 
     navigate("/");
   }
