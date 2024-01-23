@@ -35,6 +35,10 @@ export default function Cart({ userCart, setUserCart }) {
       const cart = JSON.parse(localStorage.getItem("cart"));
 
       async function doSubTotal() {
+        if (cart.length < 1) {
+          setSubTotalPrice(0);
+          console.log("if Ran");
+        }
         for (let index = 0; index < cart.length; index++) {
           const element = cart[index];
           tempPrice = tempPrice + element.price;
@@ -44,15 +48,14 @@ export default function Cart({ userCart, setUserCart }) {
       await doSubTotal();
     }
     doPrices();
+    console.log(userCart);
 
-    if (userCart) {
-      console.log(true);
+    if (userCart.length >= 1) {
+      setDisablebutton(false);
     } else {
-      console.log(false);
+      setDisablebutton(true);
     }
-
-    setDisablebutton(false);
-  }, []);
+  }, [number]);
 
   return (
     <main className="cart-main">

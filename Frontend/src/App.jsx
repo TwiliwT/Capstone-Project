@@ -16,14 +16,18 @@ import "./App.css";
 
 function App() {
   const [allProducts, setAllProducts] = useState(null);
-  const [userCart, setUserCart] = useState([]);
+  const [userCart, setUserCart] = useState(
+    JSON.parse(localStorage.getItem("cart"))
+  );
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("cart"))) {
+    let tempcart = JSON.parse(localStorage.getItem("cart"));
+    if (tempcart.length >= 1) {
       setUserCart(JSON.parse(localStorage.getItem("cart")));
       return;
     } else {
       localStorage.setItem("cart", JSON.stringify([]));
+      return;
     }
   }, []);
 
@@ -55,7 +59,9 @@ function App() {
           />
           <Route
             path="/Checkout"
-            element={<CheckoutForm setUserCart={setUserCart} userCart={userCart} />}
+            element={
+              <CheckoutForm setUserCart={setUserCart} userCart={userCart} />
+            }
           />
         </Routes>
       </TokenContextProvider>
