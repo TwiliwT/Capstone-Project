@@ -15,15 +15,19 @@
   font-size: 1.5em;
 }
 
-/* Login Form */
 .logo-container-login > a {
   color: black;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
 
 .logo-container-login > a > h1 {
   margin: 0px;
+  width: fit-content;
 }
+
+/* Login Form */
 
 .login-form-container {
   width: 100%;
@@ -71,6 +75,10 @@
 
 .login-button-section > button {
   font-size: 1em;
+}
+
+.to-register {
+  text-align: center;
 }
 
 .to-register > a > p {

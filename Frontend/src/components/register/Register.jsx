@@ -11,9 +11,8 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [error, setError] = useState("");
 
-  const { token, setToken } = useContext(TokenContext);
+  const { setToken } = useContext(TokenContext);
   const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
@@ -35,15 +34,15 @@ export default function Register() {
   }, []);
 
   return (
-    <main>
-      <div>
+    <main className="main-register">
+      <div className="logo-container-register">
         <Link to="/">
           <h1 className="logo-login">Upsilon</h1>
         </Link>
       </div>
-      <div className="login-form-container">
-        <form onSubmit={handleSubmit}>
-          <section className="username-section">
+      <div className="register-form-container">
+        <form className="register-form" onSubmit={handleSubmit}>
+          <section className="username-section-register">
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -51,10 +50,11 @@ export default function Register() {
               onChange={(event) => {
                 setUsername(event.target.value);
               }}
+              required
               id="username"
             />
           </section>
-          <section className="email-section">
+          <section className="email-section-register">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -62,10 +62,11 @@ export default function Register() {
               onChange={(event) => {
                 setEmail(event.target.value);
               }}
+              required
               id="email"
             />
           </section>
-          <section>
+          <section className="phone-section-register">
             <label htmlFor="phonenumber">PhoneNumber</label>
             <input
               type="tel"
@@ -73,10 +74,11 @@ export default function Register() {
               onChange={(event) => {
                 setPhoneNumber(event.target.value);
               }}
+              required
               id="phonenumber"
             />
           </section>
-          <section className="password-section">
+          <section className="password-section-register">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -84,10 +86,18 @@ export default function Register() {
               onChange={(event) => {
                 setPassword(event.target.value);
               }}
+              required
               id="password"
             />
           </section>
-          <button type="submit">Login</button>
+          <section className="register-button-section">
+            <button type="submit">Register</button>
+          </section>
+          <section className="to-login">
+            <Link to="/Login">
+              <p>Alread have an account? Login here.</p>
+            </Link>
+          </section>
         </form>
       </div>
     </main>

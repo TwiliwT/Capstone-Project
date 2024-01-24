@@ -1,15 +1,14 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/header/Header";
-import Login from "./components/login/Login";
-import Register from "./components/register/Register";
 import ListItems from "./components/listitems/ListItems";
 import SingleProduct from "./components/singleitem/SingleProduct";
 import Cart from "./components/cart/Cart";
 import CheckoutForm from "./components/checkoutForm/CheckoutForm";
 
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 import TokenContextProvider from "./contexts/TokenContext";
 import RenderContextProvider from "./contexts/RenderHeader";
@@ -54,7 +53,7 @@ function App() {
             }
           />
           <Route path="/Login" element={<LoginPage />} />
-          <Route path="/Register" element={<Register />} />
+          <Route path="/Register" element={<RegisterPage />} />
           <Route
             path="/Cart"
             element={<Cart userCart={userCart} setUserCart={setUserCart} />}
