@@ -1,13 +1,11 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
-import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./Header.css";
 
 export default function Header({ setUserCart }) {
   const { token, setToken } = useContext(TokenContext);
-  const { renderHeader, setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
@@ -31,7 +29,7 @@ export default function Header({ setUserCart }) {
   }
 
   return (
-    <header id="header" className={`${renderHeader ? null : "remove-header"}`}>
+    <header id="header">
       <div className="logo-container">
         <Link to="/">
           <h1>Upsilon</h1>

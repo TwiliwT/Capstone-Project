@@ -1,7 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./Cart.css";
 
@@ -9,8 +7,6 @@ export default function Cart({ userCart, setUserCart }) {
   const [number, setNumber] = useState(0);
   const [subTotalPrice, setSubTotalPrice] = useState(0);
   const [disableButton, setDisablebutton] = useState(true);
-
-  const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
@@ -26,7 +22,6 @@ export default function Cart({ userCart, setUserCart }) {
 
   //Set up a price subtotal cal here
   useEffect(() => {
-    setRenderHeader(true);
     setUserCart(JSON.parse(localStorage.getItem("cart")));
 
     async function doPrices() {

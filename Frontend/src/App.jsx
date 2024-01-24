@@ -9,7 +9,6 @@ import SingleProductPage from "./pages/SingleProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
 
 import TokenContextProvider from "./contexts/TokenContext";
-import RenderContextProvider from "./contexts/RenderHeader";
 
 import "./App.css";
 
@@ -45,36 +44,34 @@ function App() {
   }, []);
 
   return (
-    <RenderContextProvider>
-      <TokenContextProvider>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                allProducts={allProducts}
-                setAllProducts={setAllProducts}
-                setUserCart={setUserCart}
-              />
-            }
-          />
-          <Route
-            path="/Product/:id"
-            element={<SingleProductPage setUserCart={setUserCart} />}
-          />
-          <Route path="/Login" element={<LoginPage />} />
-          <Route path="/Register" element={<RegisterPage />} />
-          <Route
-            path="/Cart"
-            element={<CartPage userCart={userCart} setUserCart={setUserCart} />}
-          />
-          <Route
-            path="/Checkout"
-            element={<CheckoutPage setUserCart={setUserCart} />}
-          />
-        </Routes>
-      </TokenContextProvider>
-    </RenderContextProvider>
+    <TokenContextProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              allProducts={allProducts}
+              setAllProducts={setAllProducts}
+              setUserCart={setUserCart}
+            />
+          }
+        />
+        <Route
+          path="/Product/:id"
+          element={<SingleProductPage setUserCart={setUserCart} />}
+        />
+        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/Register" element={<RegisterPage />} />
+        <Route
+          path="/Cart"
+          element={<CartPage userCart={userCart} setUserCart={setUserCart} />}
+        />
+        <Route
+          path="/Checkout"
+          element={<CheckoutPage setUserCart={setUserCart} />}
+        />
+      </Routes>
+    </TokenContextProvider>
   );
 }
 

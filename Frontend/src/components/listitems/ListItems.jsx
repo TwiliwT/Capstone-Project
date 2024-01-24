@@ -1,16 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RenderContext } from "../../contexts/RenderHeader";
 import { getAllProducts } from "../../API";
 
 import "./ListItems.css";
 
 export default function ListItems({ allProducts, setAllProducts }) {
-  const { setRenderHeader } = useContext(RenderContext);
-
   useEffect(() => {
-    setRenderHeader(true);
-
     async function fetchAllProducts() {
       await setAllProducts(await getAllProducts());
     }

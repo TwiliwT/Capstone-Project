@@ -1,7 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./CheckoutForm.css";
 
@@ -9,8 +7,6 @@ export default function CheckoutForm({ setUserCart }) {
   const [subTotalPrice, setSubTotalPrice] = useState(0);
   const [tax, setTax] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
@@ -21,8 +17,6 @@ export default function CheckoutForm({ setUserCart }) {
   }
 
   useEffect(() => {
-    setRenderHeader(false);
-
     async function doPrices() {
       let tempPrice = 0;
       let tempTotalPrice = 0;

@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
-import { RenderContext } from "../../contexts/RenderHeader";
-// import { registerUser } from "../../API";
 
 import "./Register.css";
 
@@ -13,7 +11,6 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const { setToken } = useContext(TokenContext);
-  const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 
@@ -28,10 +25,6 @@ export default function Register() {
 
     navigate("/");
   }
-
-  useEffect(() => {
-    setRenderHeader(false);
-  }, []);
 
   return (
     <main className="main-register">
