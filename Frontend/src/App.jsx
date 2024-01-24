@@ -9,6 +9,8 @@ import SingleProduct from "./components/singleitem/SingleProduct";
 import Cart from "./components/cart/Cart";
 import CheckoutForm from "./components/checkoutForm/CheckoutForm";
 
+import LoginPage from "./pages/LoginPage";
+
 import TokenContextProvider from "./contexts/TokenContext";
 import RenderContextProvider from "./contexts/RenderHeader";
 
@@ -51,7 +53,7 @@ function App() {
               <SingleProduct userCart={userCart} setUserCart={setUserCart} />
             }
           />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<Register />} />
           <Route
             path="/Cart"

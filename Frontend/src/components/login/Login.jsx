@@ -9,7 +9,7 @@ import "./Login.css";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   const { token, setToken } = useContext(TokenContext);
   const { renderHeader, setRenderHeader } = useContext(RenderContext);
@@ -33,20 +33,22 @@ export default function Login() {
       localStorage.setItem("token", token);
       setError(null);
     } else {
+      setUsername("");
+      setPassword("");
       setError("Invalid username or password.");
     }
   };
 
   return (
     <>
-      <main>
-        <div>
+      <main className="main-login">
+        <div className="logo-container-login">
           <Link to="/">
             <h1 className="logo-login">Upsilon</h1>
           </Link>
         </div>
         <div className="login-form-container">
-          <form onSubmit={handleSubmit}>
+          <form className="login-form" onSubmit={handleSubmit}>
             <section className="username-section">
               <label htmlFor="username">Username</label>
               <input
@@ -55,6 +57,7 @@ export default function Login() {
                 onChange={(event) => {
                   setUsername(event.target.value);
                 }}
+                required
                 id="username"
               />
             </section>
@@ -66,10 +69,21 @@ export default function Login() {
                 onChange={(event) => {
                   setPassword(event.target.value);
                 }}
+                required
                 id="password"
               />
             </section>
-            <button type="submit">Login</button>
+            <section className="login-error-section">
+              {error && <p>{`${error}`}</p>}
+            </section>
+            <section className="login-button-section">
+              <button type="submit">Login</button>
+            </section>
+            <section className="to-register">
+              <Link to="/Register">
+                <p>Don't have an account? Register Here.</p>
+              </Link>
+            </section>
           </form>
         </div>
       </main>
