@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Header from "./components/header/Header";
-import ListItems from "./components/listitems/ListItems";
-import SingleProduct from "./components/singleitem/SingleProduct";
-import Cart from "./components/cart/Cart";
-import CheckoutForm from "./components/checkoutForm/CheckoutForm";
-
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import CartPage from "./pages/CartPage";
+import SingleProductPage from "./pages/SingleProductPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 import TokenContextProvider from "./contexts/TokenContext";
 import RenderContextProvider from "./contexts/RenderHeader";
@@ -49,34 +47,30 @@ function App() {
   return (
     <RenderContextProvider>
       <TokenContextProvider>
-        <Header setUserCart={setUserCart} />
         <Routes>
           <Route
             path="/"
             element={
-              <ListItems
+              <HomePage
                 allProducts={allProducts}
                 setAllProducts={setAllProducts}
+                setUserCart={setUserCart}
               />
             }
           />
           <Route
             path="/Product/:id"
-            element={
-              <SingleProduct userCart={userCart} setUserCart={setUserCart} />
-            }
+            element={<SingleProductPage setUserCart={setUserCart} />}
           />
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<RegisterPage />} />
           <Route
             path="/Cart"
-            element={<Cart userCart={userCart} setUserCart={setUserCart} />}
+            element={<CartPage userCart={userCart} setUserCart={setUserCart} />}
           />
           <Route
             path="/Checkout"
-            element={
-              <CheckoutForm setUserCart={setUserCart} userCart={userCart} />
-            }
+            element={<CheckoutPage setUserCart={setUserCart} />}
           />
         </Routes>
       </TokenContextProvider>
