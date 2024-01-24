@@ -5,12 +5,12 @@ import { RenderContext } from "../../contexts/RenderHeader";
 
 import "./CheckoutForm.css";
 
-export default function CheckoutForm({ setUserCart, userCart }) {
+export default function CheckoutForm({ setUserCart }) {
   const [subTotalPrice, setSubTotalPrice] = useState(0);
   const [tax, setTax] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const { renderHeader, setRenderHeader } = useContext(RenderContext);
+  const { setRenderHeader } = useContext(RenderContext);
 
   const navigate = useNavigate();
 

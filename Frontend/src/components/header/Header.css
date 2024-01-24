@@ -114,6 +114,13 @@ header {
   border: 1px rgb(212, 138, 0) solid;
 }
 
+.account-container > button {
+  height: fit-content;
+  font-size: 1.2em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 /* Shopping cart icon */
 .shopping-cart-container {
   height: 100%;

@@ -37,7 +37,6 @@ export default function Cart({ userCart, setUserCart }) {
       async function doSubTotal() {
         if (cart.length < 1) {
           setSubTotalPrice(0);
-          console.log("if Ran");
         }
         for (let index = 0; index < cart.length; index++) {
           const element = cart[index];
@@ -48,7 +47,6 @@ export default function Cart({ userCart, setUserCart }) {
       await doSubTotal();
     }
     doPrices();
-    console.log(userCart);
 
     if (userCart.length >= 1) {
       setDisablebutton(false);

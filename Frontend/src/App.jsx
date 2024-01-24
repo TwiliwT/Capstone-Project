@@ -22,14 +22,28 @@ function App() {
   );
 
   useEffect(() => {
-    let tempcart = JSON.parse(localStorage.getItem("cart"));
-    if (tempcart.length >= 1) {
-      setUserCart(JSON.parse(localStorage.getItem("cart")));
-      return;
-    } else {
-      localStorage.setItem("cart", JSON.stringify([]));
-      return;
+    async function checkCart() {
+      let tempcart = JSON.parse(localStorage.getItem("cart"));
+
+      async function firstCheck() {
+        if (tempcart == null) {
+          localStorage.setItem("cart", JSON.stringify([]));
+        }
+      }
+
+      async function secondCheck() {
+        if (tempcart.length >= 1) {
+          setUserCart(JSON.parse(localStorage.getItem("cart")));
+          return;
+        } else {
+          localStorage.setItem("cart", JSON.stringify([]));
+          return;
+        }
+      }
+      await firstCheck();
+      await secondCheck();
     }
+    checkCart();
   }, []);
 
   return (
