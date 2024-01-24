@@ -29,7 +29,7 @@ export default function Header({ setUserCart }) {
   }
 
   return (
-    <header id="header">
+    <header id="header" className="main-header">
       <div className="logo-container">
         <Link to="/">
           <h1>Upsilon</h1>
