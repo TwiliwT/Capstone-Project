@@ -39,39 +39,47 @@ export default function SingleProduct({ setUserCart }) {
     <>
       {product && (
         <main className="single-product-main-container">
-          <section className="single-product-image-section">
-            <img src={product.image} alt={`An image of ${product.name}.`} />
-          </section>
-          <section className="single-product-info-section">
-            <div className="single-product-title-container">
-              <h2>{product.title}</h2>
+          <div className="single-product-left-container">
+            <section className="single-product-image-section">
+              <img src={product.image} alt={`An image of ${product.name}.`} />
+            </section>
+          </div>
+          <div className="single-product-right-container">
+            <div className="single-product-info-container">
+              <section className="single-product-info-section">
+                <div className="single-product-title-container">
+                  <h2>{product.title}</h2>
+                </div>
+                <div className="single-product-rating-container">
+                  <p>{product.rating.rate}</p>
+                  <p>{`${product.rating.count} ratings`}</p>
+                </div>
+                <div className="single-product-category-container">
+                  <p>{`In ${product.category}`}</p>
+                </div>
+                <div className="single-product-descrpition-container">
+                  <p>{product.description}</p>
+                </div>
+              </section>
             </div>
-            <div className="single-product-rating-container">
-              <p>{product.rating.rate}</p>
-              <p>{`${product.rating.count} ratings`}</p>
+            <div className="single-product-buy-container">
+              <section className="single-product-buy-section">
+                <div>
+                  <p>{`Price: $${product.price}`}</p>
+                </div>
+                <div>
+                  <button
+                    onClick={() => {
+                      onSubmitHandler(product.id);
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </div>
+                {error && <p>{error}</p>}
+              </section>
             </div>
-            <div className="single-product-category-container">
-              <p>{`In ${product.category}`}</p>
-            </div>
-            <div className="single-product-descrpition-container">
-              <p>{product.description}</p>
-            </div>
-          </section>
-          <section className="single-product-buy-container">
-            <div>
-              <p>{`Price: $${product.price}`}</p>
-            </div>
-            <div>
-              <button
-                onClick={() => {
-                  onSubmitHandler(product.id);
-                }}
-              >
-                Add to cart
-              </button>
-            </div>
-            {error && <p>{error}</p>}
-          </section>
+          </div>
         </main>
       )}
     </>
