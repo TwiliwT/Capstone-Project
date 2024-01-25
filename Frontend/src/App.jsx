@@ -14,6 +14,7 @@ import "./App.css";
 
 function App() {
   const [allProducts, setAllProducts] = useState(null);
+  const [filterdAllProducts, setFilterdAllProducts] = useState([]);
   const [userCart, setUserCart] = useState(
     JSON.parse(localStorage.getItem("cart"))
   );
@@ -53,6 +54,8 @@ function App() {
               allProducts={allProducts}
               setAllProducts={setAllProducts}
               setUserCart={setUserCart}
+              setFilterdAllProducts={setFilterdAllProducts}
+              filterdAllProducts={filterdAllProducts}
             />
           }
         />

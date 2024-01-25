@@ -47,13 +47,11 @@ export default function CheckoutForm({ setUserCart }) {
 
   return (
     <main className="checkout-form-main">
-      <section>
-        <div className="checkout-logo">
-          <Link to="/">
-            <h1 className="logo-login">Upsilon</h1>
-          </Link>
-        </div>
-      </section>
+      <div className="checkout-logo">
+        <Link to="/">
+          <h1 className="logo-login">Upsilon</h1>
+        </Link>
+      </div>
       <section className="checkout-main-section">
         <section className="checkout-form-container">
           <form className="checkout-form">

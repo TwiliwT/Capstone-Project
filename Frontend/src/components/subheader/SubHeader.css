@@ -16,10 +16,14 @@
 }
 
 .subheader-container > div > p {
-    margin: 0px;
-    cursor: pointer;
+  margin: 0px;
+  cursor: pointer;
 }
 
 .subheader-container > div:hover {
-  border: 2px solid rgb(230, 149, 0);
+  box-shadow: 0px 0px 1px 2px rgb(230, 149, 0);
+}
+
+.current-filter {
+  margin-left: 52% !important;
 }

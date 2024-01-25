@@ -50,24 +50,27 @@ export default function SingleProduct({ setUserCart }) {
                 <div className="single-product-title-container">
                   <h2>{product.title}</h2>
                 </div>
-                <div className="single-product-rating-container">
-                  <p>{product.rating.rate}</p>
-                  <p>{`${product.rating.count} ratings`}</p>
-                </div>
                 <div className="single-product-category-container">
                   <p>{`In ${product.category}`}</p>
                 </div>
+                <div className="single-product-rating-container">
+                  <p>{`${product.rating.count} ratings`}</p>
+                  <p>{`Rating: ${product.rating.rate}`}</p>
+                </div>
                 <div className="single-product-descrpition-container">
                   <p>{product.description}</p>
+                </div>
+                <div>
+                  <b>{`Price: $${product.price}`}</b>
                 </div>
               </section>
             </div>
             <div className="single-product-buy-container">
               <section className="single-product-buy-section">
-                <div>
-                  <p>{`Price: $${product.price}`}</p>
+                <div className="single-product-buy-section-price">
+                  <b>{`Price: $${product.price}`}</b>
                 </div>
-                <div>
+                <div className="single-product-button-container">
                   <button
                     onClick={() => {
                       onSubmitHandler(product.id);
@@ -76,7 +79,11 @@ export default function SingleProduct({ setUserCart }) {
                     Add to cart
                   </button>
                 </div>
-                {error && <p>{error}</p>}
+                <div>
+                  {error && (
+                    <p className="single-product-error-message">{error}</p>
+                  )}
+                </div>
               </section>
             </div>
           </div>
