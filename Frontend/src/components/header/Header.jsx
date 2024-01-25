@@ -11,6 +11,7 @@ export default function Header({
 }) {
   const { token, setToken } = useContext(TokenContext);
   const [searchInput, setSearchInput] = useState("");
+  const [filter, setFilter] = useState("all");
 
   const navigate = useNavigate();
 
@@ -21,7 +22,12 @@ export default function Header({
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(value.toLowerCase())
     );
+
     setFilterdAllProducts(filtered);
+  }
+
+  function filterHandler(e) {
+    setFilter(e.target.value);
   }
 
   function logoutHandler() {
@@ -44,25 +50,16 @@ export default function Header({
       <div className="searchbar-container">
         <form>
           <div className="category-selector-container">
-            <select name="category" title="Search in">
-              <option defaultValue="search-category-all">All</option>
-              <option value="search-category-electronics">Electronics</option>
-              <option value="search-category-jewelery">Jewelery</option>
-              <option value="search-category-men's-clothing">
-                Men's clothing
-              </option>
-              <option value="search-category-women's-clothing">
-                Women's clothing
-              </option>
+            <select name="category" title="Search in" onChange={filterHandler}>
+              <option defaultValue="all">All</option>
+              <option value="electronics">Electronics</option>
+              <option value="jewelery">Jewelery</option>
+              <option value="men's-clothing">Men's clothing</option>
+              <option value="women's-clothing">Women's clothing</option>
             </select>
           </div>
           <div className="search-input-container">
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={searchHandler}
-              
-            />
+            <input type="text" placeholder="Search" onChange={searchHandler} />
           </div>
           <div className="serarch-icon-container">
             <button
