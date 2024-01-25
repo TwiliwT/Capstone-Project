@@ -1,23 +1,28 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../contexts/TokenContext";
 
 import "./Header.css";
 
-export default function Header({ setUserCart }) {
+export default function Header({
+  setUserCart,
+  allProducts,
+  setFilterdAllProducts,
+}) {
   const { token, setToken } = useContext(TokenContext);
+  const [searchInput, setSearchInput] = useState("");
 
   const navigate = useNavigate();
 
-  //This should cause you to login every time you load the page as the header is always renderd assuming you have a token in localstorage.
-  useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    {
-      if (localToken) {
-        setToken(localToken);
-      }
-    }
-  }, []);
+  function searchHandler(e) {
+    setSearchInput(e.target.value);
+    const value = e.target.value;
+    const products = allProducts;
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilterdAllProducts(filtered);
+  }
 
   function logoutHandler() {
     localStorage.removeItem("token");
@@ -26,6 +31,7 @@ export default function Header({ setUserCart }) {
     setToken(null);
     setUserCart([]);
     navigate("/");
+    window.location.reload();
   }
 
   return (
@@ -51,10 +57,21 @@ export default function Header({ setUserCart }) {
             </select>
           </div>
           <div className="search-input-container">
-            <input type="search" placeholder="Search" />
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={searchHandler}
+              
+            />
           </div>
           <div className="serarch-icon-container">
-            <button type="submit">
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+              }}
+            >
               <i className="material-symbols-outlined">search</i>
             </button>
           </div>
@@ -63,9 +80,6 @@ export default function Header({ setUserCart }) {
       <div className="account-container">
         {token ? (
           <>
-            <Link to="/account">
-              <p>Account</p>
-            </Link>
             <button onClick={logoutHandler}>Logout</button>
           </>
         ) : (

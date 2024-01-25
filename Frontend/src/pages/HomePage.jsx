@@ -11,14 +11,14 @@ export default function HomePage({
 }) {
   return (
     <>
-      <Header setUserCart={setUserCart} />
+      <Header setUserCart={setUserCart} allProducts={allProducts} setFilterdAllProducts={setFilterdAllProducts}/>
       <SubHeader
         setFilterdAllProducts={setFilterdAllProducts}
         allProducts={allProducts}
         setAllProducts={setAllProducts}
         filterdAllProducts={filterdAllProducts}
       />
-      <ListItems allProducts={allProducts} setAllProducts={setAllProducts} filterdAllProducts={filterdAllProducts} />
+      <ListItems allProducts={allProducts} setAllProducts={setAllProducts} filterdAllProducts={filterdAllProducts} setFilterdAllProducts={setFilterdAllProducts}/>
     </>
   );
 }

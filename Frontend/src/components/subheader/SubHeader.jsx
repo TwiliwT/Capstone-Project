@@ -2,11 +2,7 @@ import { useState } from "react";
 
 import "./SubHeader.css";
 
-export default function SubHeader({
-  setFilterdAllProducts,
-  filterdAllProducts,
-  allProducts,
-}) {
+export default function SubHeader({ setFilterdAllProducts, allProducts }) {
   const [currentFilter, setCurrentFilter] = useState("All");
 
   function onClickHandler(value) {

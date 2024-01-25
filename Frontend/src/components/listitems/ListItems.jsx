@@ -8,13 +8,15 @@ export default function ListItems({
   allProducts,
   setAllProducts,
   filterdAllProducts,
+  setFilterdAllProducts
 }) {
   useEffect(() => {
     async function fetchAllProducts() {
       await setAllProducts(await getAllProducts());
     }
     fetchAllProducts();
-    console.log(allProducts)
+    setFilterdAllProducts([])
+    
   }, []);
 
   return (
