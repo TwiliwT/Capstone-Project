@@ -10,24 +10,22 @@ export default function Header({
   setFilterdAllProducts,
 }) {
   const { token, setToken } = useContext(TokenContext);
-  const [searchInput, setSearchInput] = useState("");
+
   const [filter, setFilter] = useState("all");
 
   const navigate = useNavigate();
 
   function searchHandler(e) {
-    setSearchInput(e.target.value);
     const value = e.target.value;
     const products = allProducts;
     const filtered = products.filter((product) =>
       product.title.toLowerCase().includes(value.toLowerCase())
     );
-
     if (filter.toLowerCase() == "all") {
       setFilterdAllProducts(filtered);
     } else {
-      const evenMoreFilterd = filtered.filter((product) =>
-        product.category.toLowerCase().includes(filter.toLowerCase())
+      const evenMoreFilterd = filtered.filter(
+        (product) => product.category.toLowerCase() === filter.toLowerCase()
       );
       setFilterdAllProducts(evenMoreFilterd);
     }
@@ -69,8 +67,8 @@ export default function Header({
               <option defaultValue="all">All</option>
               <option value="electronics">Electronics</option>
               <option value="jewelery">Jewelery</option>
-              <option value="men's-clothing">Men's clothing</option>
-              <option value="women's-clothing">Women's clothing</option>
+              <option value="men's clothing">Men's clothing</option>
+              <option value="women's clothing">Women's clothing</option>
             </select>
           </div>
           <div className="search-input-container">

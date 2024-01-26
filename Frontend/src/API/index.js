@@ -1,5 +1,3 @@
-import { json } from "react-router-dom";
-
 const API_URl = "https://fakestoreapi.com";
 
 //Products
@@ -26,7 +24,6 @@ export async function getSingleProduct(id) {
 //User
 export async function loginUser(userObj) {
   try {
-    console.log(userObj);
     const response = await fetch(`${API_URl}/auth/login`, {
       method: "POST",
       headers: {
@@ -45,7 +42,6 @@ export async function loginUser(userObj) {
 }
 
 export async function registerUser(userObj) {
-  console.log(userObj);
   try {
     const response = await fetch(`${API_URl}/users`, {
       method: "POST",
@@ -71,7 +67,6 @@ export async function registerUser(userObj) {
       }),
     });
     const json = await response.json();
-    console.log(json);
     return json;
   } catch (error) {}
 }

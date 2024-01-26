@@ -20,10 +20,11 @@ export default function Cart({ userCart, setUserCart }) {
     setNumber(number + 1);
   }
 
-  //Set up a price subtotal cal here
+
   useEffect(() => {
     setUserCart(JSON.parse(localStorage.getItem("cart")));
 
+    //This function will do the price calc
     async function doPrices() {
       let tempPrice = 0;
 

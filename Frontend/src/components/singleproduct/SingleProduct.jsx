@@ -12,7 +12,7 @@ export default function SingleProduct({ setUserCart }) {
   const [error, setError] = useState(null);
   const [disableButton, setDisableButton] = useState(true)
 
-  const { token, setToken } = useContext(TokenContext)
+  const { token } = useContext(TokenContext)
 
   const { id } = useParams();
 
