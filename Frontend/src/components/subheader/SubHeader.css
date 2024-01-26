@@ -1,0 +1,29 @@
+.subheader-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: #b3b3b3;
+  border-bottom: 1px black solid;
+  height: 29px;
+  gap: 10px;
+}
+
+.subheader-container > div {
+  margin: 1px 10px 1px 10px;
+  display: flex;
+  font-size: 1.3em;
+}
+
+.subheader-container > div > p {
+  margin: 0px;
+  cursor: pointer;
+}
+
+.subheader-container > div:hover {
+  box-shadow: 0px 0px 1px 2px rgb(230, 149, 0);
+}
+
+.current-filter {
+  margin-left: 45% !important;
+}
