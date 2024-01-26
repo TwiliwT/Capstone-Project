@@ -34,11 +34,12 @@ function App() {
       async function firstCheck() {
         if (tempcart == null) {
           localStorage.setItem("cart", JSON.stringify([]));
+          tempcart = JSON.parse(localStorage.getItem("cart"));
         }
       }
 
       async function secondCheck() {
-        if (tempcart.length >= 1) {
+        if (tempcart.length >= 0) {
           setUserCart(JSON.parse(localStorage.getItem("cart")));
           return;
         } else {

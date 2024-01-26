@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { getSingleProduct } from "../../API";
+
+import { TokenContext } from "../../contexts/TokenContext";
 
 import "./SingleProduct.css";
 
 export default function SingleProduct({ setUserCart }) {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const [disableButton, setDisableButton] = useState(true)
+
+  const { token, setToken } = useContext(TokenContext)
 
   const { id } = useParams();
 
@@ -33,6 +38,10 @@ export default function SingleProduct({ setUserCart }) {
       setProduct(await getSingleProduct(id));
     }
     fetchSingleProduct();
+
+    if (token) {
+      setDisableButton(false)
+    }
   }, []);
 
   return (
@@ -75,6 +84,7 @@ export default function SingleProduct({ setUserCart }) {
                     onClick={() => {
                       onSubmitHandler(product.id);
                     }}
+                    disabled={disableButton}
                   >
                     Add to cart
                   </button>

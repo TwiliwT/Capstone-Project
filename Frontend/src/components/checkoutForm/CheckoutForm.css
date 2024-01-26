@@ -57,6 +57,11 @@
   text-align: center;
 }
 
+.disclaimer {
+  font-size: 0.7em;
+  margin-bottom: 0px;
+}
+
 .total-price-section {
   display: flex;
   justify-content: center;

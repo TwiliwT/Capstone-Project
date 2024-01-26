@@ -108,6 +108,14 @@ export default function CheckoutForm({ setUserCart }) {
                   required
                 />
               </section>
+              <section>
+                <p className="disclaimer">
+                  Disclaimer: None of this information <br />
+                  will be saved or sent anywhere, Regardless
+                  <br /> please do not enter any of your actual
+                  <br /> information.
+                </p>
+              </section>
             </section>
           </form>
         </section>

@@ -23,7 +23,14 @@ export default function Header({
       product.title.toLowerCase().includes(value.toLowerCase())
     );
 
-    setFilterdAllProducts(filtered);
+    if (filter.toLowerCase() == "all") {
+      setFilterdAllProducts(filtered);
+    } else {
+      const evenMoreFilterd = filtered.filter((product) =>
+        product.category.toLowerCase().includes(filter.toLowerCase())
+      );
+      setFilterdAllProducts(evenMoreFilterd);
+    }
   }
 
   function filterHandler(e) {
@@ -31,13 +38,21 @@ export default function Header({
   }
 
   function logoutHandler() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("cart");
-    setToken(null);
-    setUserCart([]);
-    navigate("/");
-    window.location.reload();
+    if (
+      confirm(
+        "Warning: When you logout your account will be DELETED. Are you sure you wish to continue?"
+      )
+    ) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      localStorage.removeItem("cart");
+      setToken(null);
+      setUserCart([]);
+      navigate("/");
+      window.location.reload();
+    } else {
+      return;
+    }
   }
 
   return (

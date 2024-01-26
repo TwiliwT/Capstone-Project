@@ -91,6 +91,13 @@ export default function Register() {
               <p>Alread have an account? Login here.</p>
             </Link>
           </section>
+          <section>
+            <p>
+              Disclaimer: None of this information <br />
+              will be saved, Regardless please do not <br />
+              enter any of your actual information.
+            </p>
+          </section>
         </form>
       </div>
     </main>
