@@ -17,6 +17,10 @@
   box-shadow: 5px 5px 5px black;
 }
 
+.item-container:hover {
+  scale: 1.1;
+}
+
 .item-container > p {
   margin-bottom: 10px;
 }
