@@ -20,7 +20,6 @@ export default function Cart({ userCart, setUserCart }) {
     setNumber(number + 1);
   }
 
-
   useEffect(() => {
     setUserCart(JSON.parse(localStorage.getItem("cart")));
 
@@ -41,6 +40,7 @@ export default function Cart({ userCart, setUserCart }) {
         }
       }
       await doSubTotal();
+      setSubTotalPrice(tempPrice.toFixed(2));
     }
     doPrices();
 

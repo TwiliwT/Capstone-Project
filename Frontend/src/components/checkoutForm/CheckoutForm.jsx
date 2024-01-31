@@ -27,6 +27,7 @@ export default function CheckoutForm({ setUserCart }) {
         for (let index = 0; index < cart.length; index++) {
           const element = cart[index];
           tempPrice = tempPrice + element.price;
+          tempPrice = Number(tempPrice.toFixed(2));
           setSubTotalPrice(tempPrice);
         }
       }
