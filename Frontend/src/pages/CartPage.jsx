@@ -12,7 +12,7 @@ export default function CartPage({ userCart, setUserCart }) {
 
   useEffect(() => {
     //This checks if there is a token and if there is not it will redirect you to the login page
-    if (!token) {
+    if (!localStorage.getItem("token")) {
       navigate("/Login");
     }
   }, []);

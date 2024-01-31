@@ -12,13 +12,9 @@ export default function CheckoutPage({ setUserCart }) {
 
   useEffect(() => {
     //This checks if there is a token and if there is not it will redirect you to the login page
-    if (!token) {
+    if (!localStorage.getItem("token")) {
       navigate("/Login");
     }
   }, []);
-  return (
-    <>
-      <CheckoutForm setUserCart={setUserCart} />
-    </>
-  );
+  return <>{token && <CheckoutForm setUserCart={setUserCart} />}</>;
 }
